@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "imagem.h"
+#include "filtro.h"
 
 int main()
 {
