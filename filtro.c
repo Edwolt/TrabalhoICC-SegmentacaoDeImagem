@@ -5,13 +5,11 @@
  * Pois esses valores teria que ser passado como parâmetro para na função recursica _conquista
  * Para ficar padronizado, adote sempre deixar esses valores zerado após o usá-los em uma função
  */
-int _quantidade = 0; // Para fazer a média
-int _total = 0;      // Para fazer a média
-int _criterio = 0;
-pixel **_imagem = NULL;
-int _altura = 0;
-int _largura = 0;
-int _valor = 0;
+int _quantidade, _total; // Para fazer a média
+int _criterio;
+pixel **_imagem;
+int _altura, _largura;
+int _valor;
 
 float media()
 {

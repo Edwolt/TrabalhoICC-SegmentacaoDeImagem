@@ -3,14 +3,17 @@ all: main
 run: main
 	./main
 
-main: filtro.o imagem.o
-	gcc -o main main.c *.o
+main: imagem.o filtro.o  main.o
+	gcc -o main *.o -Wall
+
+main.o:
+	gcc -o main.c -Wall
 
 filtro.o:
-	gcc -c filtro.c
+	gcc -c filtro.c -Wall
 
 imagem.o:
-	gcc -c imagem.c
+	gcc -c imagem.c -Wall
 
 clean:
 	rm *.o -f -v
