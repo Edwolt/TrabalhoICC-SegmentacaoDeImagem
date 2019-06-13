@@ -3,6 +3,22 @@
 #include "imagem.h"
 #include "filtro.h"
 
+void imprime_coordenadas_bordas(pixel **imagem, int altura, int largura)
+{
+    int i, j; // Iteradores
+
+    for (i = 0; i < altura; i++)
+    {
+        for (j = 0; j < largura; j++)
+        {
+            if (imagem[i][j] == 1)
+            {
+                printf("(%d, %d)", i, j);
+            }
+        }
+    }
+}
+
 int main()
 {
     int i, j; // Iteradores
