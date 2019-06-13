@@ -49,5 +49,5 @@ int main(void)
     imagem_destroi(imagem, altura);
     imagem_destroi(imagem_filtro, altura);
 
-    return 0;
+    return EXIT_SUCCESS;
 }

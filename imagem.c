@@ -38,7 +38,7 @@ pixel **imagem_aloca(int altura, int largura)
     {
         printf("\nErro: imagem_aloca()");
         printf("Não foi possivel alocar imagem\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     for (i = 0; i < altura; i++)
@@ -64,7 +64,7 @@ pixel **imagem_caloca(int altura, int largura)
     {
         printf("\nErro: imagem_caloca()");
         printf("Não foi possivel alocar imagem\n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     for (i = 0; i < altura; i++)
@@ -74,7 +74,7 @@ pixel **imagem_caloca(int altura, int largura)
         {
             printf("\nErro: imagem_caloca()");
             printf("Não foi possivel alocar imagem\n");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
     }
 
