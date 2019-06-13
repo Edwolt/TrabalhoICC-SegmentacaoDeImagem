@@ -25,10 +25,6 @@ imagem.o:
 	gcc -c imagem.c -Wall
 
 clean:
-<<<<<<< Updated upstream
-	rm *.o -f -v
-=======
-	rm ${OBJ} -f -v
+ 	rm ${OBJ} -f -v
 	rm debug.out -f -v
 	rm main -f -v
->>>>>>> Stashed changes
