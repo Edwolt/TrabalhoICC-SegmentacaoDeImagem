@@ -11,10 +11,7 @@ pixel **_imagem;
 int _altura, _largura;
 int _valor;
 
-float media()
-{
-    return _total / ((float)_quantidade);
-}
+float _media(void) { return _total / ((float)_quantidade); }
 
 // Função recursiva de conquista
 void _conquista(int x, int y)
@@ -40,6 +37,8 @@ void _conquista(int x, int y)
 
     // Recursão pixel a esquerda
     _conquista(x - 1, y);
+
+    return;
 }
 
 void filtro_conquista(pixel **imagem_filtro, pixel **imagem, int altura, int largura, int x, int y, int criterio, const int valor)
@@ -54,6 +53,8 @@ void filtro_conquista(pixel **imagem_filtro, pixel **imagem, int altura, int lar
     _conquista(x, y);
     _imagem = NULL;
     _quantidade = _total = _altura = _largura = _criterio = 0;
+
+    return;
 }
 
 pixel **filtro_aplica(pixel **imagem, int altura, int largura)

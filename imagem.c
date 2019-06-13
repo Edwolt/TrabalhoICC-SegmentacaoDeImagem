@@ -81,7 +81,7 @@ pixel **imagem_caloca(int altura, int largura)
     return imagem;
 }
 
-void imagem_salva(const char *caminho) {}
+void imagem_salva(const char *caminho) { return; }
 
 void imagem_destroi(pixel **imagem, int altura)
 {
@@ -92,4 +92,6 @@ void imagem_destroi(pixel **imagem, int altura)
         free(imagem[i]);
     }
     free(imagem);
+
+    return;
 }

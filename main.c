@@ -17,9 +17,11 @@ void imprime_coordenadas_bordas(pixel **imagem, int altura, int largura)
             }
         }
     }
+
+    return;
 }
 
-int main()
+int main(void)
 {
     int i, j; // Iteradores
 
@@ -46,4 +48,6 @@ int main()
     imagem_filtro = filtro_aplica(imagem_filtro, altura, largura);
     imagem_destroi(imagem, altura);
     imagem_destroi(imagem_filtro, altura);
+
+    return 0;
 }
