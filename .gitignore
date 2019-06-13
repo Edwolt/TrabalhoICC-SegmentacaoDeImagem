@@ -2,8 +2,7 @@
 main
 
 # Casos de Teste
-*.in
-*.out
+Casos de Teste/
 *.pgm
 
 # Arquivos do Trabalho
@@ -12,6 +11,7 @@ trabalho
 
 # vscode
 .vscode/
+.directory
 
 # Object files
 *.o
