@@ -1,8 +1,8 @@
 #include "filtro.h"
 
 /*
- * Usei variáveeis gloabais para economizar memória durante a recursão de _conquista
- * Pois esses valores teria que ser passado como parâmetro para na função recursica _conquista
+ * Usei variáveeis gloabais para economizar memória durante a recursão _conquista()
+ * Pois assim esses valores não tem que ser passado como parâmetro
  * Para ficar padronizado, adote sempre deixar esses valores zerado após o usá-los em uma função
  */
 int _quantidade, _total; // Para fazer a média
@@ -16,7 +16,11 @@ float _media(void) { return _total / ((float)_quantidade); }
 // Função recursiva de conquista
 void _conquista(int x, int y)
 {
-    // TODO Volta na recursão pois atingiu a borda da imagem
+    // Volta na recursão pois atingiu a borda da imagem
+    if (x < 0 || x >= _altura || y < 0 || y >= _largura)
+    {
+        return;
+    }
 
     // TODO Processa pixel a cima
 
@@ -41,14 +45,20 @@ void _conquista(int x, int y)
     return;
 }
 
-void filtro_conquista(pixel **imagem_filtro, pixel **imagem, int altura, int largura, int x, int y, int criterio, const int valor)
+void filtro_conquista(
+    pixel **imagem_filtro,
+    pixel **imagem,
+    int altura, int largura,
+    int x, int y, int criterio,
+    const int valor)
 {
     _imagem = imagem;
     _altura = altura;
     _largura = largura;
     _criterio = criterio;
 
-    // TODO Processa pixel (x, y) pois ele não será testado durante a recursão
+    // TODO Processa pixel (x, y)
+    // Pois ele não será processado durante a recursão
 
     _conquista(x, y);
     _imagem = NULL;

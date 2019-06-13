@@ -33,7 +33,7 @@ int main(void)
     pixel **imagem, **imagem_filtro;
 
     scanf(" %ms", &caminho);
-    imagem = imagem_abrir("teste1.pgm", &altura, &largura);
+    imagem = imagem_abrir(caminho, &altura, &largura);
 
     imagem_filtro = imagem_caloca(altura, largura);
 
@@ -42,7 +42,12 @@ int main(void)
     for (i = 0; i < num_buscas; i++)
     {
         scanf("%d %d %d", &x, &y, &criterio);
-        filtro_conquista(imagem_filtro, imagem, altura, largura, x, y, criterio, i + 1);
+        filtro_conquista(
+            imagem_filtro,
+            imagem,
+            altura, largura,
+            x, y, criterio,
+            i + 1);
     }
 
     imagem_filtro = filtro_aplica(imagem_filtro, altura, largura);

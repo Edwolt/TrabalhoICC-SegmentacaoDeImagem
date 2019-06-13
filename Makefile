@@ -20,3 +20,4 @@ imagem.o:
 
 clean:
 	rm *.o -f -v
+	rm debug.out -f -v
