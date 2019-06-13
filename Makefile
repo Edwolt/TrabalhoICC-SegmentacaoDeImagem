@@ -1,13 +1,19 @@
+OBJ   := imagem.o filtro.o main.o
+SRC   := imagem.c filtro.c main.c
+FLAGS := -Wall
+
 all: main
 
 run: main
 	./main
 
-debug.out: imagem.o filtro.o  main.o 
-	gcc -g -o debug.out main.c filtro.c imagem.c
+compile: clean main
 
-main: imagem.o filtro.o  main.o
-	gcc -o main *.o -Wall
+debug.out: ${OBJ}
+	gcc -g -o debug.out ${SRC}
+
+main: ${OBJ}
+	gcc -o main ${OBJ} -Wall
 
 main.o:
 	gcc -c main.c -Wall
@@ -19,5 +25,10 @@ imagem.o:
 	gcc -c imagem.c -Wall
 
 clean:
+<<<<<<< Updated upstream
 	rm *.o -f -v
+=======
+	rm ${OBJ} -f -v
 	rm debug.out -f -v
+	rm main -f -v
+>>>>>>> Stashed changes
