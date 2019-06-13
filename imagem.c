@@ -3,7 +3,7 @@
 pixel **imagem_abrir(const char *caminho, int *altura, int *largura)
 {
 
-    int i, j;
+    int i, j; // Iteradores
 
     FILE *arquivo = fopen(caminho, "r");
     if (arquivo == NULL)
@@ -31,12 +31,13 @@ pixel **imagem_abrir(const char *caminho, int *altura, int *largura)
 
 pixel **imagem_aloca(int altura, int largura)
 {
-    int i;
+    int i; // Iteradores
 
     pixel **imagem = (pixel **)malloc(altura * sizeof(pixel *));
     if (imagem == NULL)
     {
-        printf("Não foi possivel alocar imagem");
+        printf("\nErro: imagem_aloca()");
+        printf("Não foi possivel alocar imagem\n");
         exit(1);
     }
 
@@ -45,7 +46,34 @@ pixel **imagem_aloca(int altura, int largura)
         imagem[i] = (pixel *)malloc(largura * sizeof(pixel));
         if (imagem[i] == NULL)
         {
-            printf("Não foi possivel alocar imagem");
+            printf("\nErro: imagem_aloca()");
+            printf("Não foi possivel alocar imagem\n");
+            exit(1);
+        }
+    }
+
+    return imagem;
+}
+
+pixel **imagem_caloca(int altura, int largura)
+{
+    int i; // Iteradores
+
+    pixel **imagem = (pixel **)calloc(altura, sizeof(pixel *));
+    if (imagem == NULL)
+    {
+        printf("\nErro: imagem_caloca()");
+        printf("Não foi possivel alocar imagem\n");
+        exit(1);
+    }
+
+    for (i = 0; i < altura; i++)
+    {
+        imagem[i] = (pixel *)calloc(largura, sizeof(pixel));
+        if (imagem[i] == NULL)
+        {
+            printf("\nErro: imagem_caloca()");
+            printf("Não foi possivel alocar imagem\n");
             exit(1);
         }
     }
@@ -57,7 +85,8 @@ void imagem_salva(const char *caminho) {}
 
 void imagem_destroi(pixel **imagem, int altura)
 {
-    int i;
+    int i; // Iteradores
+
     for (i = 0; i < altura; i++)
     {
         free(imagem[i]);

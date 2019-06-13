@@ -42,7 +42,7 @@ void _conquista(int x, int y)
     _conquista(x - 1, y);
 }
 
-void filtro_conquista(pixel **imagem, int altura, int largura, int x, int y, int criterio, const int valor)
+void filtro_conquista(pixel **imagem_filtro, pixel **imagem, int altura, int largura, int x, int y, int criterio, const int valor)
 {
     _imagem = imagem;
     _altura = altura;
@@ -54,4 +54,12 @@ void filtro_conquista(pixel **imagem, int altura, int largura, int x, int y, int
     _conquista(x, y);
     _imagem = NULL;
     _quantidade = _total = _altura = _largura = _criterio = 0;
+}
+
+pixel **filtro_aplica(pixel **imagem, int altura, int largura)
+{
+    pixel **res;
+    res = imagem_caloca(altura, largura);
+    imagem_destroi(imagem, altura);
+    return res;
 }

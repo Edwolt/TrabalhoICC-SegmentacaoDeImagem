@@ -12,8 +12,11 @@ typedef unsigned char pixel; // Vai de 0 a 255
  */
 pixel **imagem_abrir(const char *caminho, int *altura, int *largura);
 
-//Aloca imagem dinamicamente
+// Aloca imagem dinamicamente
 pixel **imagem_aloca(int altura, int largura);
+
+// Aloca imagem dinamicamente e atribui 0 aos pixels
+pixel **imagem_caloca(int altura, int largura);
 
 void imagem_salva(const char *caminho);
 
