@@ -1,3 +1,18 @@
+# Programa Compilado
+main
+
+# Casos de Teste
+*.in
+*.out
+*.pgm
+
+# Arquivos do Trabalho
+trabalho.zip
+trabalho
+
+# vscode
+.vscode/
+
 # Object files
 *.o
 *.ko
