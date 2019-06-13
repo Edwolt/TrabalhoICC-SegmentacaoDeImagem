@@ -4,9 +4,8 @@
 
 int main()
 {
-    fprintf(stderr, "Stack Overflow\n");
     int altura, largura;
-    /*pixel **imagem = imagem_abrir("teste1.pgm", &altura, &largura);
+    pixel **imagem = imagem_abrir("teste1.pgm", &altura, &largura);
 
     for (int i = 0; i < altura; i++)
     {
@@ -17,7 +16,5 @@ int main()
         printf("\n");
     }
 
-
     imagem_destroi(imagem, altura);
-    */
 }

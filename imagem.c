@@ -31,7 +31,26 @@ pixel **imagem_abrir(const char *caminho, int *altura, int *largura)
 
 pixel **imagem_aloca(int altura, int largura)
 {
-    pixel **imagem = malloc(1);
+    int i;
+
+    pixel **imagem = (pixel **)malloc(altura * sizeof(pixel *));
+    if (imagem == NULL)
+    {
+        printf("Não foi possivel alocar imagem");
+        exit(1);
+    }
+
+    for (i = 0; i < altura; i++)
+    {
+        imagem[i] = (pixel *)malloc(largura * sizeof(pixel));
+        if (imagem[i] == NULL)
+        {
+            printf("Não foi possivel alocar imagem");
+            exit(1);
+        }
+    }
+
+    return imagem;
 }
 
 void imagem_salva(const char *caminho) {}

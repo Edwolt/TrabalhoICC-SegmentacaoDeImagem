@@ -2,8 +2,8 @@
 #define FILTRO_H
 
 /* 
- * Conquista uma regiao (colore a imegem com a cor valor)
- * valor eh o numero que vai ser atribuido a regiao
+ * Conquista uma região (colore a imegem com a cor valor)
+ * valor é o número que vai ser atribuido a região
  */
 void conquista(int x, int y, const int valor);
 
