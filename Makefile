@@ -7,7 +7,7 @@ main: imagem.o filtro.o  main.o
 	gcc -o main *.o -Wall
 
 main.o:
-	gcc -o main.c -Wall
+	gcc -c main.c -Wall
 
 filtro.o:
 	gcc -c filtro.c -Wall
