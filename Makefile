@@ -1,30 +1,34 @@
-OBJ   := imagem.o filtro.o main.o
-SRC   := imagem.c filtro.c main.c
-FLAGS := -Wall
+CC      := gcc
+EXEC    := main
+SRC     := imagem.c filtro.c main.c
+OBJ     := $(SRC:.c=.o)
+CFLAGS  := -Wall
+RMFLAGS := -f -v
 
-all: main
 
-run: main
-	./main
+all: $(EXEC)
 
-compile: clean main
+run: $(EXEC)
+	./$(EXEC)
 
-debug.out: ${OBJ}
-	gcc -g -o debug.out ${SRC}
-
-main: ${OBJ}
-	gcc -o main ${OBJ} -Wall
-
-main.o:
-	gcc -c main.c -Wall
-
-filtro.o:
-	gcc -c filtro.c -Wall
-
-imagem.o:
-	gcc -c imagem.c -Wall
+compile: clean $(EXEC)
 
 clean:
- 	rm ${OBJ} -f -v
-	rm debug.out -f -v
-	rm main -f -v
+	rm $(OBJ) $(RMFLAGS)
+	rm debug.out $(RMFLAGS)
+	rm main $(RMFLAGS)
+
+debug.out: $(OBJ)
+	$(CC) -g -o debug.out $(SRC)
+
+$(EXEC): $(OBJ)
+	$(CC) -o $(EXEC) $(OBJ) $(FLAGS)
+
+main.o:
+	$(CC) -c main.c $(FLAGS)
+
+filtro.o:
+	$(CC) -c filtro.c $(FLAGS)
+
+imagem.o:
+	$(CC) -c imagem.c $(FLAGS)
