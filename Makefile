@@ -20,7 +20,7 @@ clean:
 	rm $(EXEC) $(RMFLAGS)
 
 Teste:
-	echo "for i in {$(IN)}; do ./$(EXEC) < TesteIn/\$$i.in TesteOut/\$$i.out; done" | bash
+	echo "for i in {$(IN)}; do ./$(EXEC) < TesteIn/\$$i.in > TesteOut/\$$i.out || break; done" | bash
 
 $(DEBUG): $(OBJ)
 	$(CC) -g -o $(DEBUG) $(SRC)
