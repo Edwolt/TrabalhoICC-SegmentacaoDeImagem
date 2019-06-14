@@ -1,10 +1,10 @@
 CC      := gcc
-EXEC    := main
+EXEC    := trabalho
+DEBUG   := debug
 SRC     := imagem.c filtro.c main.c
 OBJ     := $(SRC:.c=.o)
 CFLAGS  := -Wall
 RMFLAGS := -f -v
-
 
 all: $(EXEC)
 
@@ -16,19 +16,13 @@ compile: clean $(EXEC)
 clean:
 	rm $(OBJ) $(RMFLAGS)
 	rm debug.out $(RMFLAGS)
-	rm main $(RMFLAGS)
+	rm $(EXEC) $(RMFLAGS)
 
-debug.out: $(OBJ)
-	$(CC) -g -o debug.out $(SRC)
+$(DEBUG): $(OBJ)
+	$(CC) -g -o $(DEBUG) $(SRC)
 
 $(EXEC): $(OBJ)
 	$(CC) -o $(EXEC) $(OBJ) $(FLAGS)
 
-main.o:
-	$(CC) -c main.c $(FLAGS)
-
-filtro.o:
-	$(CC) -c filtro.c $(FLAGS)
-
-imagem.o:
-	$(CC) -c imagem.c $(FLAGS)
+%.o: %.c
+	$(CC) -c -o $@ $< $(FLAGS)
