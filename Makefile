@@ -3,7 +3,7 @@ EXEC    := trabalho
 DEBUG   := debug
 SRC     := imagem.c filtro.c main.c
 OBJ     := $(SRC:.c=.o)
-CFLAGS  := -Wall
+CFLAGS  := -Wall -lm
 RMFLAGS := -f -v
 IN      := 1..11
 

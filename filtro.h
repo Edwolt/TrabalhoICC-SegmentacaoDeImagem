@@ -1,6 +1,7 @@
 #ifndef FILTRO_H
 #define FILTRO_H
 
+#include <math.h>
 #include "imagem.h"
 
 /* 
@@ -13,7 +14,7 @@ void filtro_conquista(
     pixel **imagem,
     int altura, int largura,
     int x, int y, int criterio,
-    const int valor);
+    int valor);
 
 pixel **filtro_aplica(pixel **imagem, int altura, int largura);
 

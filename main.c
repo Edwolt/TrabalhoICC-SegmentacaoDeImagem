@@ -26,20 +26,29 @@ int main(void)
     int i, j; // Iteradores
 
     int altura, largura;
-    char *caminho;
+    char caminho[200];
     int x, y, criterio;
     int num_buscas;
 
     pixel **imagem, **imagem_filtro;
 
-    scanf(" %ms", &caminho);
+    scanf(" %s", caminho);
     imagem = imagem_abrir(caminho, &altura, &largura);
 
     imagem_filtro = imagem_caloca(altura, largura);
 
     scanf("%d", &num_buscas);
 
-    for (i = 0; i < num_buscas; i++)
+    for (j = 0; j < altura; j++)
+    {
+        for (int k = 0; k < largura; k++)
+        {
+            printf("%hhu ", imagem_filtro[j][k]);
+        }
+        printf("\n");
+    }
+
+    for (i = 1; i <= num_buscas; i++)
     {
         scanf("%d %d %d", &x, &y, &criterio);
         filtro_conquista(
@@ -47,7 +56,16 @@ int main(void)
             imagem,
             altura, largura,
             x, y, criterio,
-            i + 1);
+            i);
+
+        for (j = 0; j < altura; j++)
+        {
+            for (int k = 0; k < largura; k++)
+            {
+                printf("%hhu ", imagem_filtro[j][k]);
+            }
+            printf("\n");
+        }
     }
 
     imagem_filtro = filtro_aplica(imagem_filtro, altura, largura);
