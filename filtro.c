@@ -16,7 +16,12 @@ float _media(void) { return _total / ((float)_quantidade); }
 // Função recursiva de conquista
 void _conquista(int x, int y)
 {
-    // Volta na recursão pois atingiu a borda da imagem
+    // Pixel já foi visitado
+    if(_imagem[x][y]!=0){
+        return;
+    }
+
+    // Atingiu a borda da imagem
     if (x < 0 || x >= _altura || y < 0 || y >= _largura)
     {
         return;
