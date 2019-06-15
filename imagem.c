@@ -83,7 +83,34 @@ pixel **imagem_caloca(int altura, int largura)
     return imagem;
 }
 
-void imagem_salva(const char *caminho) { return; }
+void imagem_salva(const char *caminho, pixel **imagem,
+                  int altura, int largura, int max)
+{
+    int i, j;
+
+    FILE *arquivo = fopen(caminho, "w");
+    if (arquivo == NULL)
+    {
+        printf("\nErro: imagem_salva()");
+        printf("Não foi possivel abrir imagem\n");
+        exit(EXIT_FAILURE);
+    }
+
+    fprintf(arquivo, "P2\n");
+    fprintf(arquivo, "%d %d\n", largura, altura);
+    fprintf(arquivo, "%d\n", max);
+
+    for (i = 0; i < altura; i++)
+    {
+        for (j = 0; j < largura; j++)
+        {
+            fprintf(arquivo, "%hhu ", imagem[i][j]);
+        }
+        fprintf(arquivo, "\n");
+    }
+
+    fclose(arquivo);
+}
 
 void imagem_destroi(pixel **imagem, int altura)
 {

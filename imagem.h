@@ -18,7 +18,9 @@ pixel **imagem_aloca(int altura, int largura);
 // Aloca imagem dinamicamente e atribui 0 aos pixels
 pixel **imagem_caloca(int altura, int largura);
 
-void imagem_salva(const char *caminho);
+// Salva imagem no formato pgm
+void imagem_salva(const char *caminho, pixel **imagem,
+                  int altura, int largura, int max);
 
 // Desaloca imagem da heap
 void imagem_destroi(pixel **imagem, int altura);

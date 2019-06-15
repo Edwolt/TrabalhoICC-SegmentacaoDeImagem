@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "imagem.h"
 #include "filtro.h"
@@ -51,6 +52,11 @@ int main(void)
     imagem_filtro = filtro_bordas(imagem_filtro, altura, largura);
 
     imprime_coordenadas_bordas(imagem_filtro, altura, largura);
+
+    char resultados[200] = "Resultados/";
+    strcat(resultados, caminho);
+
+    imagem_salva(resultados, imagem_filtro, altura, largura, 1);
 
     imagem_destroi(imagem, altura);
     imagem_destroi(imagem_filtro, altura);

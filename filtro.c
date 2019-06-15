@@ -5,12 +5,12 @@
  * Pois assim esses valores não tem que ser passado como parâmetro
  * Para evitar problemas, sempre deixe esses valores em zero após o usá-los em uma função
  */
-pixel **_imagem_filtro;
-pixel **_imagem;
-int _altura, _largura;
-int _criterio;
-pixel _valor;
-int _quantidade, _total; // Para a média
+static pixel **_imagem_filtro;
+static pixel **_imagem;
+static int _altura, _largura;
+static int _criterio;
+static pixel _valor;
+static int _quantidade, _total; // Para a média
 
 // Função recursiva de conquista
 void _conquista(int x, int y)
