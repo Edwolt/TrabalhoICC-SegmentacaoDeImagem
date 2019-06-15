@@ -1,8 +1,8 @@
 #include "filtro.h"
 
 /*
- * Usei variáveeis gloabais para economizar memória durante a recursão _conquista()
- * Pois assim esses valores não tem que ser passado como parâmetro
+ * Variáveis gloabais para economizar memória durante a recursão _conquista()
+ * Pois assim os valores não tem que ser passado como parâmetro
  * Para evitar problemas, sempre deixe esses valores em zero após o usá-los em uma função
  */
 static pixel **_imagem_filtro;
@@ -15,12 +15,13 @@ static int _quantidade, _total; // Para a média
 bool _na_media(int x, int y)
 {
     float criterio = (float)_criterio;
-    float media = _total;
-    media /= _quantidade;
-    media = _imagem[x][y] - media;
-    media = (media > 0) ? media : -media;
 
-    return (media <= criterio);
+    float diferenca = _total;                             // Calculo da média
+    diferenca /= _quantidade;                             //
+    diferenca = _imagem[x][y] - diferenca;                // Subtração
+    diferenca = (diferenca > 0) ? diferenca : -diferenca; // Módulo da media
+
+    return (diferenca <= criterio);
 }
 
 // Função recursiva de conquista
@@ -103,9 +104,9 @@ void filtro_conquista(pixel **imagem_filtro, pixel **imagem,
 
 pixel **filtro_bordas(pixel **imagem, int altura, int largura)
 {
-    int i, j;
-
+    int i, j; // iteradores
     pixel **res;
+
     res = imagem_caloca(altura, largura);
     for (i = 0; i < altura; i++)
     {

@@ -4,7 +4,7 @@
 #include <stdlib.h> // Alocacao dinamica
 #include <stdio.h>  // Manipulacao de arquivos
 
-typedef unsigned char pixel; // Vai de 0 a 255
+typedef unsigned char pixel; // Aceita valores de 0 a 255
 
 /*
  * Aloca dinamicamente imagem na heap e salva os valores nela

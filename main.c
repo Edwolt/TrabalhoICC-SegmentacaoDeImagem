@@ -4,6 +4,9 @@
 #include "imagem.h"
 #include "filtro.h"
 
+// Imprime coordenadas que tenha cor 1
+void imprime_coordenadas_bordas(pixel **imagem, int altura, int largura);
+
 void imprime_coordenadas_bordas(pixel **imagem, int altura, int largura)
 {
     int i, j; // Iteradores
@@ -24,10 +27,9 @@ void imprime_coordenadas_bordas(pixel **imagem, int altura, int largura)
 
 int main(void)
 {
-    int i, j; // Iteradores
-
+    int i; // Iteradores
     int altura, largura;
-    char caminho[200];
+    char caminho[200]; // Caminho da imagem que será aberta
     int x, y, criterio;
     int num_buscas;
 
@@ -53,10 +55,9 @@ int main(void)
 
     imprime_coordenadas_bordas(imagem_filtro, altura, largura);
 
-    char resultados[200] = "Resultados/";
-    strcat(resultados, caminho);
-
-    imagem_salva(resultados, imagem_filtro, altura, largura, 1);
+    // char resultados[200] = "Resultados/"; // caminho onde a imagem será salva
+    // strcat(resultados, caminho);
+    // imagem_salva(resultados, imagem_filtro, altura, largura, 1);
 
     imagem_destroi(imagem, altura);
     imagem_destroi(imagem_filtro, altura);
