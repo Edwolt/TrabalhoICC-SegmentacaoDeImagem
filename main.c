@@ -39,6 +39,18 @@ int main(void)
 
     scanf("%d", &num_buscas);
 
+    printf(" -- imagem --\n");
+    for (j = 0; j < altura; j++)
+    {
+        for (int k = 0; k < largura; k++)
+        {
+            printf("%hhu ", imagem[j][k]);
+        }
+        printf("\n");
+    }
+    printf("\n\n\n");
+
+    printf(" -- filtro --\n");
     for (j = 0; j < altura; j++)
     {
         for (int k = 0; k < largura; k++)
@@ -47,6 +59,7 @@ int main(void)
         }
         printf("\n");
     }
+    printf("\n\n\n");
 
     for (i = 1; i <= num_buscas; i++)
     {
@@ -66,6 +79,7 @@ int main(void)
             }
             printf("\n");
         }
+        printf("\n\n\n");
     }
 
     imagem_filtro = filtro_aplica(imagem_filtro, altura, largura);
