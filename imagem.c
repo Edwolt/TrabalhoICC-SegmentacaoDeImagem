@@ -16,7 +16,7 @@ pixel **imagem_abrir(const char *caminho, int *altura, int *largura)
     // Ignora string ("P2")
     // Le altura e largura
     // Ignora inteiro com valor maximo da matriz de pixel (indica valor que representa o branco)
-    fscanf(arquivo, "%*s %d %d %*d", altura, largura);
+    fscanf(arquivo, "%*s %d %d %*d", largura, altura);
 
     pixel **imagem = imagem_aloca(*altura, *largura);
 

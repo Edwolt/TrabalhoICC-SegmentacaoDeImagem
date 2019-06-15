@@ -17,6 +17,10 @@ void filtro_conquista(
     int x, int y, int criterio,
     int valor);
 
-pixel **filtro_aplica(pixel **imagem, int altura, int largura);
+/*
+ * Cria uma imagem apenas com as bordas usando a cor 1
+ * Um pixel pertence a borda se algum vizinho tiver uma cor diferente da dele
+ */
+pixel **filtro_bordas(pixel **imagem, int altura, int largura);
 
 #endif

@@ -82,7 +82,10 @@ int main(void)
         printf("\n\n\n");
     }
 
-    imagem_filtro = filtro_aplica(imagem_filtro, altura, largura);
+    imagem_filtro = filtro_bordas(imagem_filtro, altura, largura);
+
+    imprime_coordenadas_bordas(imagem_filtro, altura, largura);
+
     imagem_destroi(imagem, altura);
     imagem_destroi(imagem_filtro, altura);
 

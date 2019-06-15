@@ -9,75 +9,47 @@ pixel **_imagem_filtro;
 pixel **_imagem;
 int _altura, _largura;
 int _criterio;
-int _valor;
+pixel _valor;
 int _quantidade, _total; // Para fazer a média
-
-bool _na_media(int x, int y)
-{
-    return _imagem_filtro[x][y] == 0 && abs(_imagem[x][y] - _total / _quantidade) < _criterio;
-}
 
 // Função recursiva de conquista
 void _conquista(int x, int y)
 {
-    // Atingiu a borda da imagem
+    // printf("%d %d -> analise\n", x, y);
+    // (x, y) aponta para um pixel que não existe (ultrapassou dimenssao da imagem)
     if (x < 0 || x >= _altura || y < 0 || y >= _largura)
     {
         return;
     }
 
-    // Pixel não foi conquistado, logo seus vizinhos não seram conquistado por ele
-    if (_imagem_filtro[x][y] != _valor)
+    // printf("%d %d -> existe\n", x, y);
+    // Pixel já foi conquistado
+    if (_imagem_filtro[x][y] != 0)
     {
         return;
     }
 
-    // Processa pixel a cima
-    if (x - 1 >= 0 && _na_media(x - 1, y))
+    printf("%d %d -> conquistavel\n", x, y);
+    // Não satifaz condição
+    if (abs(_imagem[x][y] - _total / _quantidade) > _criterio)
     {
-        _imagem_filtro[x - 1][y] = _valor;
-        _quantidade++;
-        _total += _imagem[x - 1][y];
+        return;
     }
+    _imagem_filtro[x][y] = _valor;
+    _total += _imagem[x][y];
+    _quantidade++;
+    // printf("%d %d -> OK\n", x, y);
 
-    // Processa pixel a direita
-    if (y + 1 < _largura && _na_media(x, y + 1))
-    {
-        _imagem_filtro[x][y + 1] = _valor;
-        _quantidade++;
-        _total += _imagem[x][y + 1];
-    }
-
-    // Processa pixel abaixo
-    if (x + 1 < _altura && _na_media(x + 1, y))
-    {
-        _imagem_filtro[x + 1][y] = _valor;
-        _quantidade++;
-        _total += _imagem[x + 1][y];
-    }
-
-    // Processa pixel a esquerda
-    if (y - 1 >= 0 && _na_media(x, y - 1))
-    {
-        _imagem_filtro[x][y - 1] = _valor;
-        _quantidade++;
-        _total += _imagem[x][y - 1];
-    }
-
-    // Recursão pixel a cima
-    printf("call (%d %d)\n", x - 1, y);
+    // Cima
     _conquista(x - 1, y);
 
-    // Recursão pixel a direita
-    printf("call (%d %d)\n", x, y + 1);
+    // Direita
     _conquista(x, y + 1);
 
-    // Recursão pixel abaixo
-    printf("call (%d %d)\n", x + 1, y);
+    // Baixo
     _conquista(x + 1, y);
 
-    // Recursão pixel a esquerda
-    printf("call (%d %d)\n", x, y - 1);
+    // Esquerda
     _conquista(x, y - 1);
 
     return;
@@ -97,11 +69,11 @@ void filtro_conquista(
     _altura = altura;
     _largura = largura;
     _criterio = criterio;
-    _valor = valor;
+    _valor = (pixel)valor;
 
     printf(" -- valores antes --\n");
-    printf("imagem_filtro:  %p\n", _imagem_filtro);
-    printf("imagem:         %p\n", _imagem);
+    // printf("imagem_filtro:  %p\n", _imagem_filtro);
+    // printf("imagem:         %p\n", _imagem);
     printf("altura:         %d\n", _altura);
     printf("largura:        %d\n", _largura);
     printf("criterio:       %d\n", _criterio);
@@ -109,19 +81,37 @@ void filtro_conquista(
     printf("quantidade:     %d\n", _quantidade);
     printf("total:          %d\n", _total);
 
-    // Processa pixel (x, y), pois ele não será processado durante a recursão
+    /*
+     * Impede divisão por zero durante o calculo da média
+     * Pois se simplesmente jogar esse pixel em _conquista()
+     * _quantidade seria igual a 0
+     */
+    printf("%p [%d][%d]\n", _imagem_filtro, x, y);
     if (_imagem_filtro[x][y] == 0)
     {
-        _total = _imagem[x][y];
-        _quantidade = 1;
         _imagem_filtro[x][y] = _valor;
+        _total += _imagem[x][y];
+        _quantidade = 1;
+
+        printf("quantidade:     %d\n", _quantidade);
+        printf("total:          %d\n", _total);
+
+        // Cima
+        _conquista(x - 1, y);
+
+        // Direita
+        _conquista(x, y + 1);
+
+        // Baixo
+        _conquista(x + 1, y);
+
+        // Esquerda
+        _conquista(x, y - 1);
     }
 
-    _conquista(x, y);
-
     printf(" -- valores depois --\n");
-    printf("imagem_filtro:  %p\n", _imagem_filtro);
-    printf("imagem:         %p\n", _imagem);
+    // printf("imagem_filtro:  %p\n", _imagem_filtro);
+    // printf("imagem:         %p\n", _imagem);
     printf("altura:         %d\n", _altura);
     printf("largura:        %d\n", _largura);
     printf("criterio:       %d\n", _criterio);
@@ -142,10 +132,34 @@ void filtro_conquista(
     return;
 }
 
-pixel **filtro_aplica(pixel **imagem, int altura, int largura)
+pixel **filtro_bordas(pixel **imagem, int altura, int largura)
 {
+    int i, j;
+
     pixel **res;
     res = imagem_caloca(altura, largura);
+    for (i = 0; i < altura; i++)
+    {
+        for (j = 0; j < largura; j++)
+        {
+            if (i - 1 >= 0 && imagem[i - 1][j])
+            {
+                res[i][j] = 1;
+            }
+            else if (j + 1 < largura && imagem[i][j + 1])
+            {
+                res[i][j] = 1;
+            }
+            else if (i + 1 < altura && imagem[i + 1][j])
+            {
+                res[i][j] = 1;
+            }
+            else if (j - 1 >= 0 && imagem[i][j - 1])
+            {
+                res[i][j] = 1;
+            }
+        }
+    }
     imagem_destroi(imagem, altura);
     return res;
 }
