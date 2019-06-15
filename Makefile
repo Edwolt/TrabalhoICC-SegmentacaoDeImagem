@@ -1,7 +1,7 @@
 CC      := gcc
 EXEC    := trabalho
 DEBUG   := debug
-SRC     := imagem.c filtro.c main.c
+SRC     := $(wildcard *.c)
 OBJ     := $(SRC:.c=.o)
 CFLAGS  := -Wall -lm
 RMFLAGS := -f -v

@@ -8,7 +8,9 @@ pixel **imagem_abrir(const char *caminho, int *altura, int *largura)
     FILE *arquivo = fopen(caminho, "r");
     if (arquivo == NULL)
     {
-        fprintf(stderr, "Deu ruim, essa imgem nem existe");
+        printf("\nErro: imagem_abrir()");
+        printf("Deu ruim, essa imgem nem existe\n");
+        exit(EXIT_FAILURE);
     }
 
     // Ignora string ("P2")
