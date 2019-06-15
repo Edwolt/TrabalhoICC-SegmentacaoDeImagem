@@ -12,6 +12,17 @@ static int _criterio;
 static pixel _valor;
 static int _quantidade, _total; // Para a média
 
+bool _na_media(int x, int y)
+{
+    float criterio = (float)_criterio;
+    float media = _total;
+    media /= _quantidade;
+    media = _imagem[x][y] - media;
+    media = (media > 0) ? media : -media;
+
+    return (media <= criterio);
+}
+
 // Função recursiva de conquista
 void _conquista(int x, int y)
 {
@@ -28,7 +39,7 @@ void _conquista(int x, int y)
     }
 
     // Se não satifaz condição
-    if (abs(_imagem[x][y] - _total / _quantidade) > _criterio)
+    if (!_na_media(x, y))
     {
         return;
     }

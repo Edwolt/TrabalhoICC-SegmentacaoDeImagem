@@ -2,6 +2,7 @@
 #define FILTRO_H
 
 #include <math.h>
+#include <stdbool.h>
 #include "imagem.h"
 
 /* 
