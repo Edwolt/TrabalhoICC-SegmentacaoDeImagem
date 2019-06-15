@@ -1,9 +1,11 @@
+Zip/
+
 # Programa Compilado
 main
 
 # Casos de Teste
-TesteIn
-TesteOut
+TesteIn/
+TesteOut/
 *.pgm
 
 # Arquivos do Trabalho

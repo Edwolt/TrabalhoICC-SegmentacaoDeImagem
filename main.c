@@ -13,7 +13,7 @@ void imprime_coordenadas_bordas(pixel **imagem, int altura, int largura)
         {
             if (imagem[i][j] == 1)
             {
-                printf("(%d, %d)", i, j);
+                printf("(%d, %d)\n", i, j);
             }
         }
     }
@@ -39,47 +39,13 @@ int main(void)
 
     scanf("%d", &num_buscas);
 
-    printf(" -- imagem --\n");
-    for (j = 0; j < altura; j++)
-    {
-        for (int k = 0; k < largura; k++)
-        {
-            printf("%hhu ", imagem[j][k]);
-        }
-        printf("\n");
-    }
-    printf("\n\n\n");
-
-    printf(" -- filtro --\n");
-    for (j = 0; j < altura; j++)
-    {
-        for (int k = 0; k < largura; k++)
-        {
-            printf("%hhu ", imagem_filtro[j][k]);
-        }
-        printf("\n");
-    }
-    printf("\n\n\n");
-
     for (i = 1; i <= num_buscas; i++)
     {
         scanf("%d %d %d", &x, &y, &criterio);
-        filtro_conquista(
-            imagem_filtro,
-            imagem,
-            altura, largura,
-            x, y, criterio,
-            i);
-
-        for (j = 0; j < altura; j++)
-        {
-            for (int k = 0; k < largura; k++)
-            {
-                printf("%hhu ", imagem_filtro[j][k]);
-            }
-            printf("\n");
-        }
-        printf("\n\n\n");
+        filtro_conquista(imagem_filtro, imagem,
+                         altura, largura,
+                         x, y, criterio,
+                         i);
     }
 
     imagem_filtro = filtro_bordas(imagem_filtro, altura, largura);

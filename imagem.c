@@ -9,7 +9,7 @@ pixel **imagem_abrir(const char *caminho, int *altura, int *largura)
     if (arquivo == NULL)
     {
         printf("\nErro: imagem_abrir()");
-        printf("Deu ruim, essa imgem nem existe\n");
+        printf("Não foi possível abrir a imagem\n");
         exit(EXIT_FAILURE);
     }
 
