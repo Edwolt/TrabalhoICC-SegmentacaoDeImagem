@@ -26,7 +26,7 @@ $(DEBUG): $(OBJ)
 	$(CC) -g -o $(DEBUG) $(SRC)
 
 $(EXEC): $(OBJ)
-	$(CC) -o $(EXEC) $(OBJ) $(FLAGS)
+	$(CC) -o $(EXEC) $(OBJ) $(CFLAGS)
 
 %.o: %.c
-	$(CC) -c -o $@ $< $(FLAGS)
+	$(CC) -c -o $@ $< $(CFLAGS)
