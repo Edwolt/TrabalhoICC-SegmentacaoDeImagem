@@ -1,3 +1,4 @@
-Trabalho 3 - Segmentacão de Imagem
+# Trabalho 3 - Segmentacão de Imagem
+Trabalho 3 de Introdução a Ciências da computação: Segmentação de Imagem
 
-O código se comporta parecido a uma varinha mágica
+Um progrma recursivo que se comporta parecido com uma varinha mágica
